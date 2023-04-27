@@ -11,17 +11,34 @@ const refs = {
 refs.form.addEventListener('input', throttle(onTextareaInput,500));   
 refs.form.addEventListener('submit', onSubmit);
 
+
+popularInputMessage();
+
  function onTextareaInput(event) { 
-     dataForm.message = refs.input.value;
-     dataForm.email = refs.textarea.value;
+   dataForm.email = refs.input.value;   
+   dataForm.message = refs.textarea.value;
+     
      localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
  }
 
-function onSubmit(event) { 
-    event.PreventDefault();
+ function onSubmit(event) { 
+    event.preventDefault();
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     console.log(dataForm);
+ }
 
+function popularInputMessage(){
+  const popularTextarea = JSON.parse(
+  localStorage.getItem(STORAGE_KEY));
+  if (popularTextarea) {
+    refs.textarea.value = popularTextarea.message;
+    refs.input.value = popularTextarea.email;
+    console.log(popularTextarea);
+   } 
 }
+ 
+
+
+
 
