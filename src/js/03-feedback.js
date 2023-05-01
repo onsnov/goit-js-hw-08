@@ -24,15 +24,23 @@ popularInputMessage();
    console.log(dataForm);
  }
 
- function onSubmit(event) { 
-    event.preventDefault();
-    event.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY);
-    console.log(dataForm);
-   if (refs.textarea.value === null || refs.input.value === null) {
-     alert = 'необхідно ввести дані!';
-   }
- }
+function onSubmit(event)  {
+  if (refs.textarea.value < 1) {
+    alert('помилка');
+  }
+  if (refs.input.value < 1) {
+    alert('помилка');
+  
+
+    return;
+  } else event.preventDefault(); 
+  event.currentTarget.reset();
+  localStorage.removeItem(STORAGE_KEY);
+  console.log(dataForm);
+    
+}
+ 
+
 
 function popularInputMessage(){
   const popularTextarea = JSON.parse(
