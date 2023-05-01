@@ -1,6 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import '../css/01-gallery.css';
+import '../css/common.css';
 
 // Add imports above this line
 
